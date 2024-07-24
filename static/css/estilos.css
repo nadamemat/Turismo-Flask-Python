@@ -1,0 +1,255 @@
+/* Reset de estilos y fuente principal */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para el encabezado */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header img {
+    height: 50px;
+    vertical-align: middle;
+}
+
+/* Estilos para la barra de navegación */
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Estilos generales para el contenido principal */
+main {
+    padding: 20px;
+}
+
+/* Estilos para la sección de destinos */
+.destinos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.destino {
+    width: calc(33.33% - 20px); /* 3 columnas por fila con espacio entre ellos */
+    padding: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.destino img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+    border-radius: 8px;
+}
+
+.destino h3 {
+    margin-top: 10px;
+}
+
+.destino p {
+    margin: 8px 0;
+}
+
+.destino .btn-reservar,
+.btn-modificar,
+.btn-eliminar {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.destino .btn-reservar:hover,
+.btn-modificar:hover,
+.btn-eliminar:hover {
+    background-color: #0056b3;
+}
+
+
+
+/* Estilos para las tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    background-color: #f2f2f2; /* Color de fondo para las celdas de datos */
+}
+
+/* Estilos para los formularios */
+form {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Estilo específico para los botones Modificar y Eliminar */
+button, .btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+    text-decoration: none;
+}
+
+button:hover, .btn:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+/* Estilos para las tablas */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacio entre los elementos del formulario */
+    max-width: 400px; /* Ancho máximo para el formulario */
+    margin: auto; /* Centrando el formulario */
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten en la siguiente línea */
+    gap: 10px;
+}
+
+.form-row input[type="text"],
+.form-row input[type="number"],
+.form-row input[type="date"] {
+    flex: 1; /* Distribuye el espacio restante entre los elementos */
+    min-width: 100px; /* Ancho mínimo para las cajas de texto */
+}
+
+/* Estilo específico para el encabezado de la tabla */
+th {
+    background-color: #688db6; /* Color de fondo para el encabezado */
+    color: white; /* Color de texto para el encabezado */
+}
+
+@media (max-width: 1024px) {
+    .destino {
+        flex: 1 1 calc(33.333% - 10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .destino {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .destino{
+        flex: 1 1 100%;
+    }
+
+    table, th, td {
+        font-size: 12px;
+    }
+
+    form input, form select, form button {
+        font-size: 14px;
+    }
+}
+
+/* Media queries para adaptar tablas en dispositivos móviles */
+@media (max-width: 768px) {
+    table, th, td {
+        display: block;
+        width: 100%;
+    }
+
+    th, td {
+        box-sizing: border-box;
+    }
+
+    th {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    td {
+        position: relative;
+        padding-left: 50%;
+        white-space: normal;
+        text-align: left;
+    }
+
+    td:before {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        white-space: nowrap;
+        font-weight: bold;        
+        margin-right: 20px; /* Espacio adicional entre el encabezado y la columna de contenido */
+    }
+    
+    td:nth-of-type(1):before { content: "ID"; }
+    td:nth-of-type(2):before { content: "Nombre"; }
+    td:nth-of-type(3):before { content: "Apellido"; }
+    td:nth-of-type(4):before { content: "DNI"; }
+    td:nth-of-type(5):before { content: "Destino"; }
+    td:nth-of-type(6):before { content: "Fecha Ida"; }
+    td:nth-of-type(7):before { content: "Fecha Vuelta"; }
+    td:nth-of-type(8):before { content: "Habitaciones"; }
+    td:nth-of-type(9):before { content: "Mayores"; }
+    td:nth-of-type(10):before { content: "Menores"; }
+    td:nth-of-type(11):before { content: "Forma de Pago"; }
+    td:nth-of-type(12):before { content: "Acciones"; }
+}
+
+@media (max-width: 480px) {
+    form input, form select, form button {
+        width: 100%;
+    }
+}
+

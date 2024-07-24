@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Destinos</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li><a href="{{ url_for('clientes') }}">Clientes</a></li>
+                <li><a href="{{ url_for('destinos') }}">Destinos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Lista de Destinos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Destino</th>
+                    <th>Paquete</th>
+                    <th>Precio</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for destino in destinos %}
+                <tr>
+                    <td>{{ destino[1] }}</td>
+                    <td>{{ destino[2] }}</td>
+                    <td>{{ destino[3] }}</td>
+                    <td>{{ destino[4] }}</td>
+                    <td>
+                        <a href="{{ url_for('modificar_destino', id=destino[0]) }}" class="btn btn-modificar">Modificar</a>
+                        <a href="{{ url_for('eliminar_destino', id=destino[0]) }}" class="btn btn-eliminar">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Agregar Nuevo Destino</h2><form method="POST" action="{{ url_for('agregar_destino') }}">
+            <label for="destino">Destino:</label>
+            <input type="text" id="destino" name="destino">
+            <label for="paquete">Paquete:</label>
+            <input type="text" id="paquete" name="paquete">
+            <label for="precio">Precio:</label>
+            <input type="text" id="precio" name="precio">
+            <label for="imagen">Imagen:</label>
+            <input type="text" id="imagen" name="imagen">
+            <button type="submit">Agregar</button>
+        </form>
+    </main>
+    <footer>
+        <p>Viajes HDM - Tu mejor opción para viajar</p>
+    </footer>
+</body>
+</html>

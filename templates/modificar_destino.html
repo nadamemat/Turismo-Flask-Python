@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Destino - Turismo HDM</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Turismo HDM</h1>
+        <img src="{{ url_for('static', filename='imagenes/logo.png') }}" alt="Logo">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li><a href="{{ url_for('clientes') }}">Clientes</a></li>
+                <li><a href="{{ url_for('destinos') }}">Destinos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Modificar Destino</h2>
+        <form method="POST" action="{{ url_for('modificar_destino', id=destino[0]) }}">
+            <label for="destino">Destino:</label>
+            <input type="text" id="destino" name="destino" value="{{ destino[1] }}">
+            <label for="paquete">Paquete:</label>
+            <input type="text" id="paquete" name="paquete" value="{{ destino[2] }}">
+            <label for="precio">Precio:</label>
+            <input type="text" id="precio" name="precio" value="{{ destino[3] }}">
+            <label for="imagen">Imagen:</label>
+            <input type="text" id="imagen" name="imagen" value="{{ destino[4] }}">
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </main>
+</body>
+</html>

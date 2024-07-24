@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turismo HDM</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Turismo HDM</h1>        
+        <img src="{{ url_for('static', filename='imagenes/logo.png') }}" alt="Logo">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li><a href="{{ url_for('clientes') }}">Clientes</a></li>
+                <li><a href="{{ url_for('destinos') }}">Destinos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Destinos</h2>
+            <div class="destinos">
+                {% for destino in destinos %}
+                <div class="destino">
+                    <img src="{{ url_for('static', filename='imagenes/' ~ destino[4]) }}" alt="{{ destino[1] }}">
+                    <h3>{{ destino[1] }}</h3>
+                    <p>Paquete: {{ destino[2] }}</p>
+                    <p>Precio: ${{ destino[3] }}</p>
+                    <a href="{{ url_for('reserva', id=destino[0]) }}" class="btn">Reservar</a>
+                </div>
+                {% endfor %}
+            </div>
+    </main>
+</body>
+</html>

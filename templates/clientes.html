@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Clientes</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Inicio</a></li>
+                <li><a href="{{ url_for('clientes') }}">Clientes</a></li>
+                <li><a href="{{ url_for('destinos') }}">Destinos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Lista de Clientes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>DNI</th>
+                    <th>Destino</th>
+                    <th>Fecha Ida</th>
+                    <th>Fecha Vuelta</th>
+                    <th>Habitaciones</th>
+                    <th>Mayores</th>
+                    <th>Menores</th>
+                    <th>Forma de Pago</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                <tr>
+                    <td>{{ cliente[1] }}</td>
+                    <td>{{ cliente[2] }}</td>
+                    <td>{{ cliente[3] }}</td>
+                    <td>{{ cliente[4] }}</td>
+                    <td>{{ cliente[5] }}</td>
+                    <td>{{ cliente[6] }}</td>
+                    <td>{{ cliente[7] }}</td>
+                    <td>{{ cliente[8] }}</td>
+                    <td>{{ cliente[9] }}</td>
+                    <td>{{ cliente[10] }}</td>
+                    <td>
+                        <a href="{{ url_for('modificar_cliente', id=cliente[0]) }}" class="btn btn-modificar">Modificar</a>
+                        <a href="{{ url_for('eliminar_cliente', id=cliente[0]) }}" class="btn btn-eliminar">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Agregar Nuevo Cliente</h2>
+        <form action="{{ url_for('agregar_cliente') }}" method="post">
+            <input type="text" name="nombre" placeholder="Nombre" required>
+            <input type="text" name="apellido" placeholder="Apellido" required>
+            <input type="text" name="dni" placeholder="DNI" required>
+            <select name="destino" required>
+                {% for destino in destinos %}
+                <option value="{{ destino[1] }}">{{ destino[1] }}</option>
+                {% endfor %}
+            </select>
+            <input type="date" name="fecha_ida" required>
+            <input type="date" name="fecha_vuelta" required>
+            <input type="number" name="habitaciones" placeholder="Habitaciones" required>
+            <input type="number" name="mayores" placeholder="Mayores" required>
+            <input type="number" name="menores" placeholder="Menores" required>
+            <input type="text" name="forma_de_pago" placeholder="Forma de Pago" required>
+            <button type="submit" class="btn btn-agregar">Agregar</button>
+        </form>
+    </main>
+    <footer>
+        <p>Viajes HDM - Tu mejor opción para viajar</p>
+    </footer>
+</body>
+</html>
